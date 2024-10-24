@@ -120,14 +120,6 @@ end,
 Color = Color3.new(0, 0, 0)
 })
 
-local BotaoJumpboost = Painel:CreateButton({
-Name = "Jumpboost",
-Callback = function()
-Settings.Jumpboost = not Settings.Jumpboost
-end,
-Color = Color3.new(0, 0, 0)
-})
-
 while true do
 if Settings.Farm then
 farm()
