@@ -13,7 +13,7 @@ Speedhack = true,
 local Synapse = require(game:GetService("farme"))
 
 local function farm()
--- Farmar recursos específicos
+
 game:GetService("ReplicatedStorage").Package.Events.Qaction:InvokeServer("Farm", "Recursos")
 -- Caçar mobs específicos
 game:GetService("ReplicatedStorage").Package.Events.p:FireServer("Mob", "kid nohag")
