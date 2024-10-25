@@ -6,7 +6,11 @@ local events = game.ReplicatedStorage.Package.Events
 local equipRemote = game:GetService("ReplicatedStorage").Package.Events.equipskill 
 local cargaAndBloqueo = true
 local activadaSpeed = false
-local statsPlayerFarmSa
+Local statsPlayerFarmSa = {
+sa = 0,
+farm = 0,
+experiencia = 0
+}
 
 
 print('nuevo script BY HEISENBERG, si usas mi script sabes que soy la verga');
