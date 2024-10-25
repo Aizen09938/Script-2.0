@@ -43,6 +43,7 @@ local multiQuest = {
 		{nombre= "Radish",minimo = 25000},
 		{nombre= "Kid Nohag",minimo = 20000},
 		{nombre= "Klirin",minimo = 4000},
+                {nombre= "X Finghter",minimo = 0},
 	},
 	bossBills = {
 		{nombre= "Vekuta (SSJBUI)",minimo = 2875000000},
